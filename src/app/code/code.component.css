@@ -1,0 +1,35 @@
+.hightlight-code {
+  background-color: #d5f4e6;
+}
+
+.normal-code {
+  background-color: #fefbd8;
+}
+
+.code-line {
+  display: block;
+}
+
+.padding2 {
+  padding-left: 20px;
+}
+
+.padding4 {
+  padding-left: 40px;
+}
+
+.padding6 {
+  padding-left: 60px;
+}
+
+.padding8 {
+  padding-left: 80px;
+}
+
+.padding10 {
+  padding-left: 100px;
+}
+
+.padding12 {
+  padding-left: 120px;
+}
