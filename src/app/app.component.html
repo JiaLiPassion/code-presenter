@@ -1,10 +1,12 @@
-{{hightlightLineNumber}} {{consoleOutput}}
+Current code is: {{mode}} <button (click)="changeMode();">change</button>
 <div class="wrapper">
-  <app-code class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber"></app-code>
+  <app-code *ngIf="mode === 'js'" class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber"></app-code>
+  <app-code *ngIf="mode === 'zone.js'" class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="'smaller'"></app-code>
   <app-console class="console" [output]="consoleStr"></app-console>
-  <app-stack class="stack" [stacks]="stacks">Stack</app-stack>
-  <div class="dom">Dom</div>
-  <div class="eventloop">Event Loop</div>
-  <div class="microtask">Microtask Queue</div>
-  <div class="macrotask">Macrotask Queue</div>
+  <app-stack class="stack" [stacks]="stacks"></app-stack>
+  <app-dom class="dom" [items]="domTasks"></app-dom>
+  <app-eventloop class="eventloop"></app-eventloop>
+  <app-queue class="microtask" [items]="microtasks" [title]="'Microtasks:'">Microtask Queue</app-queue>
+  <app-queue class="macrotask" [items]="macrotasks" [title]="'Macrotasks:'">Macrotask Queue</app-queue>
+  <app-queue class="eventtask" [items]="eventtasks" [title]="'Eventtasks:'">Eventtask Queue</app-queue>
 </div>

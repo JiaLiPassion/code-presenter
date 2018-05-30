@@ -1,9 +1,21 @@
 .dom-container {
-  border: solid;
+  border: dashed;
   border-color: brown;
+  height: 85%;
 }
 
 .dom-item {
   border: solid;
   border-color: plum;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dom-item-text {
+  grid-column: 1/2;
+}
+
+.dom-item-image {
+  grid-column: 2/3;
+  height: 30px;
 }

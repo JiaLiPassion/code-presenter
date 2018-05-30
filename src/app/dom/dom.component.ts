@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dom',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dom.component.css']
 })
 export class DomComponent implements OnInit {
-
+  @Input() items: { text: string, img: string }[];
   constructor() { }
 
   ngOnInit() {

@@ -1,5 +1,7 @@
+WebApis:
 <div class="dom-container">
-  <div class="dom-item">
-    
+  <div class="dom-item" *ngFor="let item of items">
+    <div class="dom-item-text">{{item.text}}</div>
+    <img class="dom-item-image" [src]="item.img">
   </div>
 </div>

@@ -1,0 +1,21 @@
+.img {
+  width: 150px;
+  height: 150px;
+  grid-column: 1/2;
+}
+
+.text {
+  color: red;
+  font-size: +5;
+  grid-column: 2/3;
+}
+
+.holder3 {
+  grid-column: 3/7;
+}
+
+.container {
+  display: grid;
+  grid-auto-columns: repeat(6, fr);
+  width: 50%;
+}

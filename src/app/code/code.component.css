@@ -2,6 +2,10 @@
   background-color: #d5f4e6;
 }
 
+.smaller {
+  font-size: 90%;
+}
+
 .normal-code {
   background-color: #fefbd8;
 }

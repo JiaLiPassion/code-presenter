@@ -1,0 +1,8 @@
+{{title}}
+<div class="container">
+  <div class="queue-container">
+    <div class="queue-item" [ngClass]="getClass(idx)" *ngFor="let item of items; let idx = index">
+      {{item}}
+    </div>
+  </div>
+</div>

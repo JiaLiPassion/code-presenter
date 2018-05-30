@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CodeComponent implements OnInit {
   @Input() code: string;
-  @Input() hightlightLineNumber;
+  @Input() hightlightLineNumber: number;
+  @Input() fontClass: string;
   constructor() {}
 
   ngOnInit() {}
