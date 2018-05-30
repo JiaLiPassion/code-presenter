@@ -1,7 +1,8 @@
+{{hightlightLineNumber}} {{consoleOutput}}
 <div class="wrapper">
   <app-code class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber"></app-code>
-  <div class="console">Console</div>
-  <div class="stack">Stack</div>
+  <app-console class="console" [output]="consoleStr"></app-console>
+  <app-stack class="stack" [stacks]="stacks">Stack</app-stack>
   <div class="dom">Dom</div>
   <div class="eventloop">Event Loop</div>
   <div class="microtask">Microtask Queue</div>

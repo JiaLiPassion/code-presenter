@@ -1,0 +1,8 @@
+Stack:
+<br/>
+<div class="stack-container">
+  <div class="placeholder" [ngStyle]="{'height': (250 - stacks.length*22) + 'px'}"></div>
+  <div class="stack-item" *ngFor="let item of stacks; let idx = index">
+    {{item}}
+  </div>
+</div>

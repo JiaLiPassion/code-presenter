@@ -1,0 +1,17 @@
+.stack-item {
+  border: solid;
+  border-color: rgb(152, 196, 86);
+  height: 20px;
+  padding: 1px;
+  border-width: 1px;
+}
+
+.stack-container {
+  border: solid;
+  border-color: gray;
+  position: relative;
+}
+
+.placeholder {
+  height: 250px;
+}

@@ -1,0 +1,9 @@
+.dom-container {
+  border: solid;
+  border-color: brown;
+}
+
+.dom-item {
+  border: solid;
+  border-color: plum;
+}
