@@ -1,0 +1,17 @@
+<a routerLink="/home">Home</a>
+<div class="wrapper">
+  <app-code *ngIf="mode === 'js'" class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber"></app-code>
+  <app-code *ngIf="mode === 'zone.js'" class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="'smaller'"></app-code>
+  <app-console class="console" [output]="consoleStr"></app-console>
+  <app-stack class="stack" [stacks]="stacks"></app-stack>
+  <app-dom class="dom" [items]="domTasks"></app-dom>
+  <app-eventloop class="eventloop"></app-eventloop>
+  <div class="callback-container">
+    <div>Callback Queues:</div>
+    <div class="callback">
+      <app-queue class="microtask" [items]="microtasks" [title]="'Microtasks:'">Microtask Queue</app-queue>
+      <app-queue class="macrotask" [items]="macrotasks" [title]="'Macrotasks:'">Macrotask Queue</app-queue>
+      <app-queue class="eventtask" [items]="eventtasks" [title]="'Eventtasks:'">Eventtask Queue</app-queue>
+    </div>
+  </div>
+</div>

@@ -68,10 +68,12 @@ export const stacks = [
   },
   {
     lineNo: 5,
-    domDisplayString: 'native addEventListener',
+    stackDisplayString: 'native addEventListener',
+    domDisplayString: 'addEventListener',
   },
   {
     lineNo: 12,
+    clearStack: 1,
     consoleDisplayString: 'hasTask state: {microTask: false, macroTask: false, eventTask: true}'
   },
   {

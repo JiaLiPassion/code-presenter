@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CodeService } from '../code.service';
 
 @Component({
   selector: 'app-eventloop',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class EventloopComponent implements OnInit {
   imgSrc = 'assets/image/eventloop.png';
   text: string;
-  constructor() { }
+  constructor(private codeService: CodeService) { }
 
   ngOnInit() {
   }
