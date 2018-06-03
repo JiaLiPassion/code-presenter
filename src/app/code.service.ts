@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
 
-import * as js from './js.repo';
-import * as zone from './zone.repo';
+import repo from './repo';
+const {js, zone, timeout, zonetimeout} = repo;
 
 export interface StackItem {
   lineNo: number;
@@ -29,31 +29,40 @@ export class CodeService {
   private stacks: StackItem[];
   stackEmiiter: EventEmitter = new EventEmitter();
   private currentStack: number;
-  mode = 'js';
   constructor() {
-    this.init();
+    this.init('js');
   }
 
-  getMode() {
-    return this.mode;
+  changeMode(mode: string) {
+    this.init(mode);
   }
 
-  changeMode() {
-    if (this.mode === 'js') {
-      this.mode = 'zone.js';
-    } else if (this.mode === 'zone.js') {
-      this.mode = 'js';
-    }
-    this.init();
-  }
-
-  init() {
-    if (this.mode === 'js') {
-      this.code = js.code;
-      this.stacks = js.stacks;
-    } else if (this.mode === 'zone.js') {
-      this.code = zone.code;
-      this.stacks = zone.stacks;
+  init(mode: string) {
+    switch (mode) {
+      case 'js':
+        this.code = js.code;
+        this.stacks = js.stacks;
+        break;
+      case 'zone':
+        this.code = zone.code;
+        this.stacks = zone.stacks;
+        break;
+      case 'timeout':
+        this.code = timeout.code;
+        this.stacks = timeout.stacks;
+        break;
+      case 'zonetimeout':
+        this.code = zonetimeout.code;
+        this.stacks = zonetimeout.stacks;
+        break;
+      case 'promise':
+        this.code = js.code;
+        this.stacks = js.stacks;
+        break;
+      case 'zonepromise':
+        this.code = js.code;
+        this.stacks = js.stacks;
+        break;
     }
     this.currentStack = -1;
   }

@@ -17,6 +17,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'code', component: CodePresenterComponent, data: { mode: 'js' } },
   { path: 'zonecode', component: CodePresenterComponent, data: { mode: 'zone' }},
+  { path: 'timeout', component: CodePresenterComponent, data: { mode: 'timeout' } },
+  { path: 'zonetimeout', component: CodePresenterComponent, data: { mode: 'zonetimeout' } },
   {
     path: '',
     redirectTo: '/home',

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, Input } from '@angular/core';
 import { CodeService, StackItem } from '../code.service';
 import { EventloopComponent } from '../eventloop/eventloop.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -11,7 +11,8 @@ declare let Prism: any;
   styleUrls: ['./code-presenter.component.css']
 })
 export class CodePresenterComponent implements OnInit {
-  mode: string;
+  @Input() mode: string;
+  fontClass: string;
   code: string;
   hightlightLineNumber: number;
   consoleOutput: string[] = [];
@@ -24,22 +25,7 @@ export class CodePresenterComponent implements OnInit {
 
   @ViewChild(EventloopComponent) eventloopComponent: EventloopComponent;
 
-  constructor(private codeService: CodeService, private route: ActivatedRoute) {}
-
-  changeMode() {
-    this.codeService.changeMode();
-    this.mode = this.codeService.getMode();
-    this.code = this.codeService.getCode();
-    this.consoleOutput = [];
-    this.consoleStr = '';
-    this.stacks = [];
-    this.domTasks = [];
-    this.microtasks = [];
-    this.macrotasks = [];
-    this.eventtasks = [];
-
-    this.hightlightLineNumber = 0;
-    this.highlight();
+  constructor(private codeService: CodeService, private route: ActivatedRoute) {
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -77,16 +63,18 @@ export class CodePresenterComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((paramMode => {
-      this.mode = this.codeService.getMode();
       if (paramMode && this.mode !== paramMode.mode) {
-         this.codeService.changeMode();
+        this.mode = paramMode.mode;
+        this.codeService.changeMode(this.mode);
       }
       this.init();
+      if (this.code.split('\n').length > 20) {
+        this.fontClass = 'smaller';
+      }
     }));
   }
 
   init() {
-    this.mode = this.codeService.getMode();
     this.code = this.codeService.getCode();
     this.highlight();
     this.codeService.stackEmiiter.addListener('stackAdvanced', (item: StackItem) => {
@@ -122,9 +110,6 @@ export class CodePresenterComponent implements OnInit {
       }
 
       this.eventloopComponent.setAction(item.eventloop);
-      if (this.stacks.length === 0) {
-        this.eventloopComponent.triggerEventLoop();
-      }
 
       if (typeof item.clearMicroTask === 'number') {
         for (let i = 0; i < item.clearMicroTask; i++) {
@@ -154,6 +139,10 @@ export class CodePresenterComponent implements OnInit {
 
       if (item.eventTaskDisplayString) {
         this.eventtasks.push(item.eventTaskDisplayString);
+      }
+
+      if (this.stacks.length === 0 && this.microtasks.length === 0) {
+        this.eventloopComponent.triggerEventLoop();
       }
 
       this.highlight();

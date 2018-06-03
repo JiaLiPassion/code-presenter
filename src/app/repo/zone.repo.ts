@@ -32,11 +32,8 @@ export const stacks = [
   { lineNo: 0, stackDisplayString: 'main' },
   { lineNo: 1, stackDisplayString: 'var zone = ...' },
   {
-    lineNo: 11,
-    clearStack: 1
-  },
-  {
     lineNo: 16,
+    clearStack: 1,
     stackDisplayString: 'zone.run'
   },
   {
@@ -45,20 +42,20 @@ export const stacks = [
   },
   {
     lineNo: 27,
-    stackDisplayString: 'addEventListener',
+    stackDisplayString: 'Zone addEventListener',
+    isZone: true,
     clearStack: 1
   },
   {
     lineNo: 4,
     isZone: true,
-    eventloop: 'hook Zone onScheduleTask',
+    eventloop: 'Zone onScheduleTask',
     stackDisplayString: 'hook Zone onScheduleTask'
   },
   {
     lineNo: 4,
     stackDisplayString: 'console.log',
     consoleDisplayString: 'schedule ZoneTask eventTask HtmlButtonElement:addEventListener',
-    clearStack: 1
   },
   {
     lineNo: 5,
@@ -74,10 +71,21 @@ export const stacks = [
   {
     lineNo: 12,
     clearStack: 1,
+    isZone: true,
+    stackDisplayString: 'Zone HasTask'
+  },
+  {
+    lineNo: 12,
+    stackDisplayString: 'console.log',
     consoleDisplayString: 'hasTask state: {microTask: false, macroTask: false, eventTask: true}'
   },
   {
     lineNo: 13,
+    clearStack: 1
+  },
+  {
+    lineNo: 14,
+    clearStack: 1
   },
   {
     lineNo: 6,
@@ -85,7 +93,7 @@ export const stacks = [
   },
   {
     lineNo: 28,
-    clearStack: 2,
+    clearStack: 3,
     clearDom: 1
   },
   {
@@ -104,7 +112,6 @@ export const stacks = [
   {
     lineNo: 8,
     stackDisplayString: 'console.log',
-    clearStack: 1,
     consoleDisplayString: 'invoke zone task eventTask HtmlButtonElement:addEventListener'
   },
   {
@@ -131,7 +138,8 @@ export const stacks = [
   },
   {
     lineNo: 20,
-    stackDisplayString: 'setTimeout',
+    isZone: true,
+    stackDisplayString: 'Zone setTimeout',
   },
   {
     lineNo: 4,
@@ -146,33 +154,50 @@ export const stacks = [
     clearStack: 1
   },
   {
-    lineNo: 12,
-    consoleDisplayString: 'hasTask state: {microTask: false, macroTask: true, eventTask: true}'
-  },
-  {
-    lineNo: 13,
-  },
-  {
     lineNo: 5,
     stackDisplayString: 'native setTimeout',
     clearStack: 1,
     domDisplayString: 'setTimeout 1000ms'
   },
   {
+    lineNo: 12,
+    clearStack: 1,
+    stackDisplayString: 'Zone HasTask',
+    isZone: true,
+  },
+  {
+    lineNo: 12,
+    consoleDisplayString: 'hasTask state: {microTask: false, macroTask: true, eventTask: true}',
+  },
+  {
+    lineNo: 13,
+    clearStack: 1,
+  },
+  {
+    lineNo: 14,
+    clearStack: 1,
+  },
+  {
     lineNo: 6,
-    clearStack: 2,
+    clearStack: 1,
   },
   {
     lineNo: 23,
-    clearStack: 1,
   },
   {
     lineNo: 24,
     stackDisplayString: 'promise.then',
-    clearStack: 1
   },
   {
     lineNo: 25,
+    clearStack: 1,
+  },
+  {
+    lineNo: 10,
+    clearStack: 1,
+  },
+  {
+    lineNo: 26,
     clearStack: 1,
   },
   {
@@ -184,7 +209,11 @@ export const stacks = [
     lineNo: 8,
     clearMacroTask: 1,
     isZone: true,
-    stackDisplayString: 'hook zone onInvokeTask macroTask setTimeout',
+    stackDisplayString: 'Zone InvokeTask',
+  },
+  {
+    lineNo: 8,
+    stackDisplayString: 'console.log',
     consoleDisplayString: 'invoke ZoneTask macroTask setTimeout'
   },
   {
@@ -200,21 +229,18 @@ export const stacks = [
   {
     lineNo: 4,
     isZone: true,
+    stackDisplayString: 'Zone ScheduleTask'
+  },
+  {
+    lineNo: 4,
+    stackDisplayString: 'console.log',
     consoleDisplayString: 'schedule ZoneTask microTask Promise.then',
-    stackDisplayString: 'hook zone onScheduleTask microTask Promise.then'
   },
   {
     lineNo: 5,
     isZone: true,
     clearStack: 1,
     stackDisplayString: 'ZoneDelegate.scheduleTask'
-  },
-  {
-    lineNo: 12,
-    consoleDisplayString: 'hasTask state: {microTask: true, macroTask: true, eventTask: true}'
-  },
-  {
-    lineNo: 13,
   },
   {
     lineNo: 5,
@@ -227,13 +253,25 @@ export const stacks = [
   },
   {
     lineNo: 12,
-    consoleDisplayString: 'hasTask state: {microTask: true, macroTask: false, eventTask: true}'
+    stackDisplayString: 'Zone HasTask',
+    isZone: true
+  },
+  {
+    lineNo: 12,
+    stackDisplayString: 'console.log',
+    consoleDisplayString: 'hasTask state: {microTask: true, macroTask: true, eventTask: true}'
   },
   {
     lineNo: 13,
+    clearStack: 1,
+  },
+  {
+    lineNo: 14,
+    clearStack: 1
   },
   {
     lineNo: 6,
+    clearStack: 1
   },
   {
     lineNo: 22,
@@ -246,15 +284,27 @@ export const stacks = [
   {
     lineNo: 8,
     isZone: true,
-    consoleDisplayString: 'invoke ZoneTask microTask Promise.then',
-    stackDisplayString: 'hook zone onInvokeTask microTask Promise.then',
+    stackDisplayString: 'Zone InvokeTask',
     clearMicroTask: 1
+  },
+  {
+    lineNo: 8,
+    consoleDisplayString: 'invoke ZoneTask microTask Promise.then',
+    stackDisplayString: 'console.log',
   },
   {
     lineNo: 9,
     isZone: true,
     stackDisplayString: 'ZoneDelegate.invokeTask',
     clearStack: 1
+  },
+  {
+    lineNo: 25,
+    stackDisplayString: 'then callback',
+  },
+  {
+    lineNo: 10,
+    clearStack: 2
   },
   {
     lineNo: 12,
@@ -264,11 +314,11 @@ export const stacks = [
     lineNo: 13,
   },
   {
-    lineNo: 25,
-    stackDisplayString: 'then callback',
+    lineNo: 10,
+    clearStack: 1
   },
   {
     lineNo: 10,
-    clearStack: 2
-  }
+    clearStack: 1
+  },
 ];
