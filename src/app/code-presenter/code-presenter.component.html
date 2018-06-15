@@ -1,7 +1,7 @@
 <a routerLink="/home">Home</a> <div>Press key 'N' to see the demo step by step</div>
 <div class="wrapper">
-  <app-code class="codeblock" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="fontClass"></app-code>
-  <app-console class="console" [output]="consoleStr"></app-console>
+  <app-code [ngClass]="codeClass" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="fontClass"></app-code>
+  <app-console [ngClass]="consoleClass" [output]="consoleStr"></app-console>
   <app-stack class="stack" [stacks]="stacks"></app-stack>
   <app-dom class="dom" [items]="domTasks"></app-dom>
   <app-eventloop class="eventloop"></app-eventloop>

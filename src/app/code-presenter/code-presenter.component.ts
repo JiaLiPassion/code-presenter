@@ -13,6 +13,9 @@ declare let Prism: any;
 export class CodePresenterComponent implements OnInit {
   @Input() mode: string;
   fontClass = 'normal-code';
+  codeClass = 'codeblock';
+  consoleClass = 'console';
+
   code: string;
   hightlightLineNumber: number;
   consoleOutput: string[] = [];
@@ -70,6 +73,8 @@ export class CodePresenterComponent implements OnInit {
       this.init();
       if (this.code.split('\n').length >= 20) {
         this.fontClass = 'smaller';
+        this.codeClass = 'codeblocksmaller';
+        this.consoleClass = 'consolesmaller';
       }
     }));
   }
