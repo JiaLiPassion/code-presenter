@@ -18,8 +18,7 @@ zone.run(() => {
   setTimeout(function() {
     console.log('timer callback invoked');
   }, 1000);
-});
-    `.split('\n').slice(1).join('\n');
+});`.split('\n').slice(1).join('\n');
 export const stacks = [
   { lineNo: 0, stackDisplayString: 'main' },
   {

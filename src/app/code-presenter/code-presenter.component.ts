@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, ViewChild, Input } from '@angular/core';
-import { CodeService, StackItem } from '../code.service';
+import { CodeService, StackItem } from '../services/code.service';
 import { EventloopComponent } from '../eventloop/eventloop.component';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ declare let Prism: any;
 })
 export class CodePresenterComponent implements OnInit {
   @Input() mode: string;
-  fontClass: string;
+  fontClass = 'normal-code';
   code: string;
   hightlightLineNumber: number;
   consoleOutput: string[] = [];
@@ -68,7 +68,7 @@ export class CodePresenterComponent implements OnInit {
         this.codeService.changeMode(this.mode);
       }
       this.init();
-      if (this.code.split('\n').length > 20) {
+      if (this.code.split('\n').length >= 20) {
         this.fontClass = 'smaller';
       }
     }));

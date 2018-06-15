@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CodeComponent } from './code/code.component';
-import { CodeService } from './code.service';
+import { CodeService } from './services/code.service';
 import { ConsoleComponent } from './console/console.component';
 import { StackComponent } from './stack/stack.component';
 import { DomComponent } from './dom/dom.component';

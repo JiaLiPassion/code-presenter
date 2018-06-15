@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
 
-import repo from './repo';
+import repo from '../repo';
 const {js, zone, timeout, zonetimeout} = repo;
 
 export interface StackItem {

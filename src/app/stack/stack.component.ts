@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { StackItem } from '../code.service';
+import { StackItem } from '../services/code.service';
 
 @Component({
   selector: 'app-stack',

@@ -3,11 +3,12 @@
 }
 
 .smaller {
-  font-size: 90%;
+  font-size: 150%;
 }
 
 .normal-code {
   background-color: #fefbd8;
+  font-size: 160%;
 }
 
 .code-line {
