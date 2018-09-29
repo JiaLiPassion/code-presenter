@@ -7,7 +7,7 @@ declare let Prism: any;
   styleUrls: ['./codes.component.css']
 })
 export class CodesComponent implements OnInit {
-  appCode = `
+  appCode = `//-------testapp.js(ES2017)-------
   async function test() {
     console.log('test');
     return 1;
@@ -28,7 +28,7 @@ export class CodesComponent implements OnInit {
   appHightlightLineNumber: number;
   appFontClass: string;
 
-  zoneCode = `
+  zoneCode = `//-------zone.js----------
   Zone.prototype.run = function() {
     _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
     try {
@@ -61,7 +61,7 @@ export class CodesComponent implements OnInit {
   zoneHightlightLineNumber: number;
   zoneFontClass: string;
 
-  zonePromiseCode = `
+  zonePromiseCode = `// -----------zone-promise.js----------
   function resolvePromise(promise, state, value) {
     promise[symbolState] = state;
     promise[symbolValue] = value;
@@ -156,6 +156,8 @@ export class CodesComponent implements OnInit {
       zoneLineNo: x
     })) as any);
 
+  status = 'Not started';
+
   constructor() {}
 
   ngOnInit() {
@@ -165,8 +167,8 @@ export class CodesComponent implements OnInit {
     this.outputList[4] = `if it is AsyncFunction, we get the result(native promise) `;
     this.outputList[9] = `here we have a native promise return from 'async test()', we call it 'nativePromise1' `;
     this.outputList[10] = `here we get another native promise return from 'async test1()', we call it 'nativePromise2' `;
-    this.outputList[12] = `we will record current zone frame, so we can restore the zoneFrame after 'await promise (nativePromise1)' is resolved`;
-    this.outputList[13] = `we will register a promise.then to nativePromise1, so we can restore the zoneFrame to asyncZoneFrame.parent just like finally (line 22) does, we can call it 'async finally'`;
+    this.outputList[12] = `IMPORTANT! we will record current zone frame, so we can restore the zoneFrame after 'await promise (nativePromise1)' is resolved`;
+    this.outputList[13] = `IMPORTANT! register a 'then' to nativePromise1, so we can restore the zoneFrame to 'parent' when async finished just like finally (line 22) does`;
     this.outputList[24] = `in patched promise.prototype.then, we also check if the promise is native, we keep a flag in our wrapped ZoneAwarePromise`;
     this.outputList[33] = `Now test1 is returned (but not really finished, because the await), so the 'test zone' is also done, we go back to <root> zone`;
     this.outputList[36] = `we can check now we are in <root> zone`;
@@ -174,11 +176,11 @@ export class CodesComponent implements OnInit {
     this.outputList[49] = `nativePromise1.then was called now because the 'await' in line 9, and we got a new ZoneAwarePromise(parent promise is nativePromise1), we call it zonePromise1`;
     this.outputList[63] = `because nativePromise1 is resolve, and zonePromise1 is also resolved here`;
     this.outputList[70] = `because we know zonePromise1 is a chained promise from nativePromise(nativePromise1), we need to restore the before await 'zone' status`;
-    this.outputList[72] = `now we restored the zone the same status before await ('test' zone)`;
+    this.outputList[72] = `IMPORTANT! now we restored the zone the same status before await ('test' zone)`;
     this.outputList[77] = `the nativePromise2 is resolved too`;
     this.outputList[84] = `I am still verifying this one, we may don't need to restore the zoneFrame again`;
     this.outputList[89] = `We set a flag so we don't set currentFrame to parent zone twice`;
-    this.outputList[90] = `Now async test1 finished, we need to restore the zone to parent(which is <root>)`;
+    this.outputList[90] = `IMPORTANT! Now async test1 finished, we need to restore the zone to parent(which is <root>) just like finally (line 22) does`;
 
     this.stacksList[2] = { action: 'add', stack: { stackDisplayString: 'test Zone' } };
     this.stacksList[33] = { action: 'remove' };
@@ -225,8 +227,10 @@ export class CodesComponent implements OnInit {
   advance(diff: number) {
     this.currentStep = this.currentStep + diff;
     if (this.currentStep < 0 || this.currentStep >= this.steps.length) {
-      this.currentStep = 0;
+      this.status = 'Finished';
+      return;
     }
+    this.status = 'Running';
     console.log('currentStep: ', this.currentStep);
     const step = this.steps[this.currentStep];
     this.appHightlightLineNumber = step.appLineNo || -1;
