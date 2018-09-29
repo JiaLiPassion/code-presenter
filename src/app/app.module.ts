@@ -12,13 +12,15 @@ import { EventloopComponent } from './eventloop/eventloop.component';
 import { QueueComponent } from './queue/queue.component';
 import { CodePresenterComponent } from './code-presenter/code-presenter.component';
 import { HomeComponent } from './home/home.component';
+import { CodesComponent } from './codes/codes.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'code', component: CodePresenterComponent, data: { mode: 'js' } },
-  { path: 'zonecode', component: CodePresenterComponent, data: { mode: 'zone' }},
+  { path: 'zonecode', component: CodePresenterComponent, data: { mode: 'zone' } },
   { path: 'timeout', component: CodePresenterComponent, data: { mode: 'timeout' } },
   { path: 'zonetimeout', component: CodePresenterComponent, data: { mode: 'zonetimeout' } },
+  { path: 'zoneasync', component: CodesComponent },
   {
     path: '',
     redirectTo: '/home',
@@ -28,11 +30,20 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, CodeComponent, ConsoleComponent, StackComponent, DomComponent,
-    EventloopComponent, QueueComponent, CodePresenterComponent, HomeComponent
+    AppComponent,
+    CodeComponent,
+    ConsoleComponent,
+    CodesComponent,
+    StackComponent,
+    DomComponent,
+    EventloopComponent,
+    QueueComponent,
+    CodePresenterComponent,
+    HomeComponent,
+    CodesComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [CodeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

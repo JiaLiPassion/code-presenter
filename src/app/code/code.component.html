@@ -1,1 +1,6 @@
-<pre [attr.data-line]="hightlightLineNumber" class="language-javascript line-numbers" [ngClass]="fontClass"><code>{{code}}</code></pre>
+<ng-container *ngIf="hightlightLineNumber >= 0">
+  <pre [attr.data-line]="hightlightLineNumber" class="language-javascript line-numbers" [ngClass]="fontClass"><code>{{code}}</code></pre>
+</ng-container>
+<ng-container *ngIf="!hightlightLineNumber || hightlightLineNumber < 0">
+  <pre class="language-javascript line-numbers" [ngClass]="fontClass"><code>{{code}}</code></pre>
+</ng-container>

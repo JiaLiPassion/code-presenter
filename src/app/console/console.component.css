@@ -2,3 +2,6 @@
   border: dotted;
   height: 90%;
 }
+.commandline-prompt {
+  font-size: 120%;
+}

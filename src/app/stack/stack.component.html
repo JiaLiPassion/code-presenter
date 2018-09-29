@@ -1,9 +1,9 @@
-<span class="title">Stack: </span>
-<br/>
+<span class="title">{{title}}: </span>
+<br />
 <div class="container">
   <div class="stack-container">
     <div class="stack-item" [ngClass]="getClass(idx)" *ngFor="let item of stacks; let idx = index">
       {{item.stackDisplayString}}
     </div>
- </div>
+  </div>
 </div>

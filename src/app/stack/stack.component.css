@@ -1,21 +1,11 @@
 .title {
-  font-size:150%;
+  font-size: 150%;
 }
 
 .stack-item {
   border: solid;
   border-color: rgb(152, 196, 86);
   background: papayawhip;
-}
-
-.row10 {
-  grid-column: 1/2;
-  grid-row: 10/ 11;
-}
-
-.row9 {
-  grid-column: 1/2;
-  grid-row: 9/ 10;
 }
 
 .row8 {

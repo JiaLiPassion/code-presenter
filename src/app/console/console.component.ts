@@ -6,7 +6,10 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   styleUrls: ['./console.component.css']
 })
 export class ConsoleComponent implements OnInit {
-  @Input() output: string;
+  @Input()
+  output: string;
+  @Input()
+  title = 'Console';
   constructor() {}
 
   ngOnInit() {}

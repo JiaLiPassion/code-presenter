@@ -7,14 +7,17 @@ import { StackItem } from '../services/code.service';
   styleUrls: ['./stack.component.css']
 })
 export class StackComponent implements OnInit {
-  @Input() stacks: StackItem[];
+  @Input()
+  stacks: StackItem[];
+  @Input()
+  title = 'Stacks';
 
   constructor() {}
 
   ngOnInit() {}
 
   getClass(idx: number) {
-    const classNames = ['row' + (10 - this.stacks.length + idx)];
+    const classNames = ['row' + (idx + 1)];
     if (this.stacks[idx].isZone) {
       classNames.push('zone');
     }

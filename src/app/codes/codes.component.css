@@ -1,0 +1,30 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
+  grid-column-gap: 20px;
+}
+
+.app-code {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+.zone-code {
+  grid-column: 2/3;
+  grid-row: 1/4;
+}
+
+.zone-promise-code {
+  grid-column: 3/4;
+  grid-row: 1/4;
+}
+
+.output {
+  grid-column: 1/3;
+  grid-row: 4/6;
+}
+
+.stack {
+  grid-column: 3/4;
+}

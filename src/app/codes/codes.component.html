@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <app-code class="app-code" [code]="appCode" [hightlightLineNumber]="appHightlightLineNumber" [fontClass]="appFontClass"></app-code>
+  <app-code class="zone-code" [code]="zoneCode" [hightlightLineNumber]="zoneHightlightLineNumber" [fontClass]="zoneFontClass"></app-code>
+  <app-code class="zone-promise-code" [code]="zonePromiseCode" [hightlightLineNumber]="zonePromiseHightlightLineNumber"
+    [fontClass]="zoneFontClass"></app-code>
+  <app-console [output]="output" [title]="'Explanation'" class="output"></app-console>
+  <app-stack [stacks]="stacks" [title]="'Zone Stack'" class="stack"></app-stack>
+</div>
