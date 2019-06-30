@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EventEmitter } from 'events';
 
 import repo from '../repo';
-const {js, zone, timeout, zonetimeout} = repo;
+const { js, zone, timeout, zonetimeout } = repo;
 
 export interface StackItem {
   lineNo: number;
@@ -11,11 +11,13 @@ export interface StackItem {
   consoleDisplayString?: string;
   microTaskDisplayString?: string;
   macroTaskDisplayString?: string;
+  zoneMacroTaskDisplayString?: string;
   eventTaskDisplayString?: string;
   clearStack?: number;
   clearDom?: number;
   clearMicroTask?: number;
   clearMacroTask?: number;
+  clearZoneMacroTask?: number;
   clearEventTask?: number;
   eventloop?: string;
   isZone?: boolean;

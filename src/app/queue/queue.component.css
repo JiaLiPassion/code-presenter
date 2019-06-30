@@ -1,5 +1,6 @@
 .title {
-  font-size: 130%;
+  font-size: 300%;
+  color: red;
 }
 
 .container {
@@ -18,6 +19,7 @@
   border: solid;
   border-color: powderblue;
   background: khaki;
+  font-size: 300%;
 }
 
 .queue1 {

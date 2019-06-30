@@ -21,15 +21,15 @@ export class CodePresenterComponent implements OnInit {
   consoleOutput: string[] = [];
   consoleStr: string;
   stacks: StackItem[] = [];
-  domTasks: {text: string, img: string}[] = [];
+  domTasks: { text: string; img: string }[] = [];
   microtasks: string[] = [];
   macrotasks: string[] = [];
+  zoneMacrotasks: string[] = [];
   eventtasks: string[] = [];
 
   @ViewChild(EventloopComponent) eventloopComponent: EventloopComponent;
 
-  constructor(private codeService: CodeService, private route: ActivatedRoute) {
-  }
+  constructor(private codeService: CodeService, private route: ActivatedRoute) {}
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown($event: KeyboardEvent) {
@@ -65,7 +65,7 @@ export class CodePresenterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe((paramMode => {
+    this.route.data.subscribe(paramMode => {
       if (paramMode && this.mode !== paramMode.mode) {
         this.mode = paramMode.mode;
         this.codeService.changeMode(this.mode);
@@ -76,7 +76,7 @@ export class CodePresenterComponent implements OnInit {
         this.codeClass = 'codeblocksmaller';
         this.consoleClass = 'consolesmaller';
       }
-    }));
+    });
   }
 
   init() {
@@ -132,8 +132,18 @@ export class CodePresenterComponent implements OnInit {
         }
       }
 
+      if (typeof item.clearZoneMacroTask === 'number') {
+        for (let i = 0; i < item.clearZoneMacroTask; i++) {
+          this.zoneMacrotasks.shift();
+        }
+      }
+
       if (item.macroTaskDisplayString) {
         this.macrotasks.push(item.macroTaskDisplayString);
+      }
+
+      if (item.zoneMacroTaskDisplayString) {
+        this.zoneMacrotasks.push(item.zoneMacroTaskDisplayString);
       }
 
       if (typeof item.clearEventTask === 'number') {

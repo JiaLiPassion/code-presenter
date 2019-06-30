@@ -1,11 +1,12 @@
 .title {
-  font-size: 150%;
+  font-size: 300%;
+  color: red;
 }
 
 .dom-container {
   border: dashed;
   border-color: brown;
-  height: 85%;
+  height: 90%;
 }
 
 .dom-item {
@@ -17,9 +18,10 @@
 
 .dom-item-text {
   grid-column: 1/2;
+  font-size: 300%;
 }
 
 .dom-item-image {
   grid-column: 2/3;
-  height: 30px;
+  height: 40px;
 }

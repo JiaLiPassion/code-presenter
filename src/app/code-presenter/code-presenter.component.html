@@ -1,16 +1,20 @@
-<a routerLink="/home">Home</a> <div>Press key 'N' to see the demo step by step</div>
+<a routerLink="/home">Home</a>
+<div>Press key 'N' to see the demo step by step</div>
 <div class="wrapper">
-  <app-code [ngClass]="codeClass" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="fontClass"></app-code>
-  <app-console [ngClass]="consoleClass" [output]="consoleStr"></app-console>
+  <app-code [ngClass]="codeClass" [code]="code" [hightlightLineNumber]="hightlightLineNumber" [fontClass]="fontClass">
+  </app-code>
+  <!--<app-console [ngClass]="consoleClass" [output]="consoleStr"></app-console>-->
+  <app-eventloop [ngClass]="consoleClass"></app-eventloop>
   <app-stack class="stack" [stacks]="stacks"></app-stack>
   <app-dom class="dom" [items]="domTasks"></app-dom>
-  <app-eventloop class="eventloop"></app-eventloop>
-  <div class="callback-container">
+  <app-queue [ngClass]="eventloop" [items]="macrotasks" [title]="'Native Macrotasks Queue:'">Macrotask Queue</app-queue>
+  <app-queue class="zone-queue" [items]="zoneMacrotasks" [title]="'Zone Macrotasks Queue:'">Zone MacroTask Queue
+  </app-queue>
+  <!-- <div class="callback-container">
     <div>Callback Queues:</div>
     <div class="callback">
       <app-queue class="microtask" [items]="microtasks" [title]="'Microtasks:'">Microtask Queue</app-queue>
-      <app-queue class="macrotask" [items]="macrotasks" [title]="'Macrotasks:'">Macrotask Queue</app-queue>
       <app-queue class="eventtask" [items]="eventtasks" [title]="'Eventtasks:'">Eventtask Queue</app-queue>
     </div>
-  </div>
+  </div> -->
 </div>
